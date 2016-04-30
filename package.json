@@ -1,6 +1,6 @@
 {
   "name": "pull-http-server",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "create http servers in pull streamy ways",
   "main": "index.js",
   "scripts": {
