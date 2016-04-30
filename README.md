@@ -8,11 +8,46 @@ npm install --save pull-http-server
 
 ## example
 
-see [./example](https://ahdinosaur.github.io/pull-http-server)
+```javascript
+var summary = require('server-summary')
+var pull = require('pull-stream')
+var createServer = require('pull-http-server')
+
+var server = createServer(function (stream) {
+  console.log('method', stream.source.method)
+  console.log('url', stream.source.url)
+  console.log('headers', stream.source.headers)
+
+  pull(
+    stream,
+    pull.map(function (buffer) {
+      var string = buffer.toString()
+      var upper = string.toUpperCase()
+      return Buffer(upper)
+    }),
+    stream
+  )
+})
+
+server.listen(5000, summary(server))
+```
+
+```shell
+curl -d "asdfjkl" http://localhost:5000
+```
 
 ## usage
 
-### `pullHttpServer = require('pull-http-server')`
+### `createServer = require('pull-http-server')`
+
+### `server = createServer(requestHandler)`
+
+`requestHandler` receives `duplex` pull stream (with `source` and `sink` properties).
+
+- `source` has same properties as [`http.IncomingMessage`](https://nodejs.org/api/http.html#http_class_http_incomingmessage)
+- `sink` has same properties as [`http.ServerResponse`](https://nodejs.org/api/http.html#http_class_http_serverresponse)
+
+returns node [`http.Server`](https://nodejs.org/api/http.html#http_class_http_server).
 
 ## license
 
