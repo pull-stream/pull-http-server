@@ -1,0 +1,31 @@
+{
+  "name": "pull-http-server",
+  "version": "0.0.0",
+  "description": "create http servers in pull streamy ways",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js",
+    "start": "node-dev example/server | garnish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahdinosaur/pull-http-server.git"
+  },
+  "keywords": [],
+  "author": "Mikey <michael.williams@enspiral.com> (http://dinosaur.is)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ahdinosaur/pull-http-server/issues"
+  },
+  "homepage": "https://github.com/ahdinosaur/pull-http-server#readme",
+  "devDependencies": {
+    "garnish": "^5.2.0",
+    "node-dev": "^3.1.0",
+    "server-summary": "^6.0.1",
+    "tape": "^4.5.1"
+  },
+  "dependencies": {
+    "pull-stream": "^3.3.2",
+    "stream-to-pull-stream": "^1.6.8"
+  }
+}
